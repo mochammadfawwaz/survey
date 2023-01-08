@@ -332,7 +332,7 @@
     </div>
     <!-- Daftar Modal -->
     <div class="modal fade" id="daftar">
-        <form name="login" action="./adminweb/cek_login.php" method="POST" onSubmit="return validasi(this)">
+        <form name="login" action="./adminweb/aksi_daftar.php" method="POST" onSubmit="return validasi(this)">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header" bgcolor="black">
@@ -371,7 +371,7 @@
                             <div class="form-group">
                                 <label for="" class=" control-label col-sm-3"></label>
                                 <div class="col-sm-2">
-                                    <a class="btn btn-success" href="register.php"><span class="glyphicon glyphicon-user"></span> Daftar</a>
+                                    <button class="btn btn-success" type="submit" ><span class="glyphicon glyphicon-user"></span> Daftar</a>
                                 </div>
                             </div>
                         </div>

@@ -20,8 +20,8 @@
 	}
 </script>
 <?php
-if ($_SESSION[level] == 'Super') {
-	$aksi = "modul/mod_user/aksi_user.php";
+if ($_SESSION[level] == 'Super' || $_SESSION[level] == 'User') {
+	$aksi = "modul/mod_datauser/aksi_datauser.php";
 	switch ($_GET[act]) {
 			// Tampil User
 		default:
@@ -39,9 +39,13 @@ if ($_SESSION[level] == 'Super') {
 						<i class="glyphicon glyphicon-wrench"></i> Data User
 					</div>
 				</div>
+				<?php 
+							$edit = mysql_query("SELECT * FROM tuser WHERE userId='$_SESSION[userId]'");
+							$r = mysql_fetch_array($edit);
+						?>
 				<div class="panel-body">
-					<form method="POST" action="<?php echo $aksi ?>?module=user&act=update" class="form-horizontal">
-						<input type="hidden" name="id" value="<?php echo $r[userId]; ?>">
+					<form method="POST" action="<?php echo $aksi ?>?module=datauser&act=update" class="form-horizontal">
+						<input type="hidden" name="id" value="<?php echo $_SESSION[userId]; ?>">
 						<div class="form-group">
 							<label for="username" class="col-sm-2 control-label">Nama Lengkap</label>
 							<div class="col-sm-5">
@@ -49,7 +53,7 @@ if ($_SESSION[level] == 'Super') {
 									<div class="input-group-addon">
 										<span class="glyphicon glyphicon-user"></span>
 									</div>
-									<input type="text" name="username" class="form-control" placeholder="Nama Lengkap" value="<?php echo $r[username]; ?>">
+									<input type="text" name="nama" class="form-control" placeholder="Nama Lengkap" value="<?= $r[fullname] ?>">
 								</div>
 							</div>
 						</div>
@@ -60,7 +64,7 @@ if ($_SESSION[level] == 'Super') {
 									<div class="input-group-addon">
 										<span class="glyphicon glyphicon-tags"></span>
 									</div>
-									<select name="" id="" class="form-control">
+									<select name="gender" id="" class="form-control">
 										<option value="Laki-laki">Laki-laki</option>
 										<option value="Laki-laki">Perempuan</option>
 									</select>
@@ -74,7 +78,7 @@ if ($_SESSION[level] == 'Super') {
 									<div class="input-group-addon">
 										<span class="glyphicon glyphicon-tags"></span>
 									</div>
-									<input type="text" name="nama" class="form-control" placeholder="Nama Perusahaan" value="<?php echo $r[fullname]; ?>">
+									<input type="text" name="company" class="form-control" placeholder="Nama Perusahaan" value="<?= $r[company] ?>"> 
 								</div>
 							</div>
 						</div>
@@ -85,10 +89,10 @@ if ($_SESSION[level] == 'Super') {
 									<div class="input-group-addon">
 										<span class="glyphicon glyphicon-user"></span>
 									</div>
-									<input type="text" name="nama" class="form-control" placeholder="Posisi Jabatan" value="<?php echo $r[fullname]; ?>">
+									<input type="text" name="position" class="form-control" placeholder="Posisi Jabatan" value="<?= $r[position] ?>">
 								</div>
 							</div>
-						</div>
+					</div>
 						<div class="form-group">
 							<label for="nama" class="col-sm-2 control-label">No Telepon</label>
 							<div class="col-sm-5">
@@ -96,13 +100,12 @@ if ($_SESSION[level] == 'Super') {
 									<div class="input-group-addon">
 										<span class="glyphicon glyphicon-earphone"></span>
 									</div>
-									<input type="text" name="nama" class="form-control" placeholder="Nama Lengkap" value="<?php echo $r[fullname]; ?>">
+									<input type="text" name="no_telephone" class="form-control" placeholder="Nomor Telephone" value="<?= $r[no_telephone] ?>">
 								</div>
 							</div>
 						</div>
 
-						<div class="form-group">
-							<label for="Email" class="col-sm-2 control-label"></label>
+						<div class="form-group">>
 							<div class="col-sm-6">
 								<button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-floppy-save"></span> Simpan</button> &nbsp;<button class="btn btn-danger" type="button" onclick="self.history.back()"><span class="glyphicon glyphicon-remove"></span> Batal</button>
 							</div>

@@ -31,7 +31,7 @@
                     }
                     else
                     {
-                       echo "Selamat Datang Pemantau <strong>".$_SESSION['fullname']."</strong> Silahkan untuk melihat data"; 
+                       echo "Selamat Datang Pemantau <strong>".$_SESSION['fullname']."</strong> Silahkan untuk melihat data";
                     }
                     ?>	
                     </div>	

@@ -18,11 +18,21 @@ elseif ($module=='user' AND $act=='input'){
 	$aksi =mysql_query("INSERT INTO tuser(username,
 								   password,
 								   fullname,
-								   email,level) 
+								   email,
+								   level,
+								   gender,
+								   position,
+								   company,
+								   no_telephone) 
 							VALUES('$_POST[username]',
 								   '$pass',
 								   '$_POST[nama]',
-								   '$_POST[email]','$_POST[level]')");
+								   '$_POST[email]',
+								   '$_POST[level]',
+								   '$_POST[gender]',
+								   '$_POST[position]',
+								   '$_POST[company]',
+								   '$_POST[no_telephone]')");
 	
 	if($aksi)
 	{
@@ -38,7 +48,11 @@ elseif ($module=='user' AND $act=='update'){
 		mysql_query("UPDATE tuser SET username	= '$_POST[username]',
 									fullname	= '$_POST[nama]',
 									email		= '$_POST[email]',
-									level       = '$_POST[level]'
+									level       = '$_POST[level]',
+									company		= '$_POST[company]',
+									position 	= '$_POST[position]',
+									no_telephone = '$_POST[no_telephone]',
+									gender 		= '$_POST[gender]'
 									WHERE userId = '$_POST[id]'");
 	}
 	else{
@@ -47,7 +61,11 @@ elseif ($module=='user' AND $act=='update'){
                                  password        = '$pass',
                                  fullname	     = '$_POST[nama]',
                                  email		     = '$_POST[email]',
-                                 level       = '$_POST[level]'
+                                 level       = '$_POST[level]',
+									company		= '$_POST[company]',
+									position 	= '$_POST[position]',
+									no_telephone = '$_POST[no_telephone]',
+									gender 		= '$_POST[gender]'
                                  WHERE userId	 = '$_POST[id]'");
 	}
 	header('location:../../master.php?module=user');

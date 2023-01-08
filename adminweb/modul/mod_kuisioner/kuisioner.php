@@ -20,17 +20,24 @@
 	}
 </script>
 <?php
-if ($_SESSION[level] == 'Super') {
+if ($_SESSION[level] == 'Super' || $_SESSION[level] == 'User') {
 	$aksi = "modul/mod_user/aksi_user.php";
 	switch ($_GET[act]) {
 			// Tampil User
 		default:
 ?>
 			<div class="row">
+				
+
 				<div class="col-lg-12">
 					<h1 class="page-header">
-						<i class="glyphicon glyphicon-user"></i> Data User
+						<i class="glyphicon glyphicon-user"></i> Halaman Kuisioner
 					</h1>
+					
+					<?php 
+							$edit = mysql_query("SELECT * FROM tuser WHERE userId='$_SESSION[userId]'");
+							$r = mysql_fetch_array($edit);
+						?>
 					<form method="POST" action="<?php echo $aksi ?>?module=user&act=update" class="form-horizontal">
 						<input type="hidden" name="id" value="<?php echo $r[userId]; ?>">
 						<div class="form-group">
@@ -40,7 +47,7 @@ if ($_SESSION[level] == 'Super') {
 									<div class="input-group-addon">
 										<span class="glyphicon glyphicon-user"></span>
 									</div>
-									<input type="text" name="username" class="form-control" disabled value="<?php echo $r[username]; ?>">
+									<input type="text" name="username" class="form-control" disabled value="<?php echo $r['fullname'] ?>">
 								</div>
 							</div>
 						</div>
@@ -51,9 +58,8 @@ if ($_SESSION[level] == 'Super') {
 									<div class="input-group-addon">
 										<span class="glyphicon glyphicon-tags"></span>
 									</div>
-									<select name="" id="" class="form-control">
-										<option value="Laki-laki">Laki-laki</option>
-										<option value="Laki-laki">Perempuan</option>
+									<select name="" id="" class="form-control" disabled>
+										<option value="<?= $_SESSION['fullname'] ?>"><?= $r['gender'] ?></option>
 									</select>
 								</div>
 							</div>
@@ -65,7 +71,7 @@ if ($_SESSION[level] == 'Super') {
 									<div class="input-group-addon">
 										<span class="glyphicon glyphicon-tags"></span>
 									</div>
-									<input type="text" name="nama" class="form-control" placeholder="Nama Perusahaan" value="<?php echo $r[fullname]; ?>">
+									<input type="text" name="nama" class="form-control" placeholder="Nama Perusahaan" value="<?= $r['company']; ?>" disabled>
 								</div>
 							</div>
 						</div>
@@ -76,7 +82,7 @@ if ($_SESSION[level] == 'Super') {
 									<div class="input-group-addon">
 										<span class="glyphicon glyphicon-user"></span>
 									</div>
-									<input type="text" name="nama" class="form-control" placeholder="Posisi Jabatan" value="<?php echo $r[fullname]; ?>">
+									<input type="text" name="nama" class="form-control" placeholder="Posisi Jabatan" value="<?= $r['position']; ?>" disabled>
 								</div>
 							</div>
 						</div>
@@ -87,7 +93,7 @@ if ($_SESSION[level] == 'Super') {
 									<div class="input-group-addon">
 										<span class="glyphicon glyphicon-earphone"></span>
 									</div>
-									<input type="text" name="nama" class="form-control" placeholder="Nama Lengkap" value="<?php echo $r[fullname]; ?>">
+									<input type="text" name="nama" class="form-control" placeholder="Nama Lengkap" value="<?= $r['no_telephone']; ?>" disabled>
 								</div>
 							</div>
 						</div>
@@ -96,31 +102,48 @@ if ($_SESSION[level] == 'Super') {
 				</div>
 			</div>
 
-			<table class="table table-striped table-bordered">
-				<h3>Isi Kuisioner</h3>
-				<thead>
-					<th width='3%'><b>
-							<font face='Tahoma' size='2'>No</font>
-						</b></th>
-					<th colspan='2'>
-						<p align='center'><b>
-								<font face='Tahoma' size='2'>DESKRIPSI</font>
-							</b>
-					</th>
-					<th colspan="5" bgcolor='#FFFF00'>
-						<p align='center'>
-							<font face='Tahoma' size='2'>KUALITAS</font>
-					</th>
-				</thead>
-				<tbody>
-					<?php
-					include "koneksi.php";
-					error_reporting(0);
-					$no = 1;
-					$sql = mysql_query("SELECT * FROM tgroup");
-					while ($data = mysql_fetch_array($sql)) {
-						$id = $data[groupId];
-						echo "<tr valign='top'>
+			<form method='POST' action='modul/mod_kuisioner/aksi_kuisioner.php' onSubmit=\"return validasisurvey(this)\">
+                            <script language="javascript">
+                                function validasisurvey(form) {
+                                    if (form.companyName.value == "") {
+                                        alert("Anda belum mengisikan nama Anda.");
+                                        form.companyName.focus();
+                                        return (false);
+                                    }
+                                    if (form.companyAddress1.value == "") {
+                                        alert("Anda belum mengisikan alamat Anda.");
+                                        form.companyAddress1.focus();
+                                        return (false);
+                                    }
+                                }
+                            </script>
+                            <table class="table">
+                                <tr>
+                                    <td colspan="">
+                                        <table class="table table-striped table-bordered">
+                                            <thead>
+                                                <th width='3%'><b>
+                                                        <font face='Tahoma' size='2'>No</font>
+                                                    </b></th>
+                                                <th colspan='2'>
+                                                    <p align='center'><b>
+                                                            <font face='Tahoma' size='2'>DESKRIPSI</font>
+                                                        </b>
+                                                </th>
+                                                <th colspan="5" bgcolor='#FFFF00'>
+                                                    <p align='center'>
+                                                        <font face='Tahoma' size='2'>KUALITAS</font>
+                                                </th>
+                                            </thead>
+                                            <tbody>
+                                                <?php
+                                                include "koneksi.php";
+                                                error_reporting(0);
+                                                $no = 1;
+                                                $sql = mysql_query("SELECT * FROM tgroup");
+                                                while ($data = mysql_fetch_array($sql)) {
+                                                    $id = $data[groupId];
+                                                    echo "<tr valign='top'>
                                                           <td><font face='Tahoma' size='2' colspan='1'><b> $no</b></font></td>
                                                           <td colspan='2'><font face='Tahoma' size='2'><b>$data[groupName]</b></font></td>
                                                           
@@ -131,11 +154,11 @@ if ($_SESSION[level] == 'Super') {
                                                           <td height='25' width='8%' bgcolor='#000000'><p align='center'><font face='Tahoma' size='1' color='white'>E<br>(Sangat Buruk)</font></td>
                                                       </tr>";
 
-						$hasil = mysql_query("SELECT * FROM tdescription, tgroup WHERE tdescription.groupId = '$id' AND tdescription.groupId = tgroup.groupId ORDER BY tgroup.groupId");
-						$i = 1;
-						while ($r = mysql_fetch_array($hasil)) {
+                                                    $hasil = mysql_query("SELECT * FROM tdescription, tgroup WHERE tdescription.groupId = '$id' AND tdescription.groupId = tgroup.groupId ORDER BY tgroup.groupId");
+                                                    $i = 1;
+                                                    while ($r = mysql_fetch_array($hasil)) {
 
-							echo "<tr>
+                                                        echo "<tr>
                                                               <td colspan='1'></td>
                                                              
                                                               <td colspan='2'><font face='Tahoma' size='2'> $r[description]</font></td>
@@ -145,14 +168,23 @@ if ($_SESSION[level] == 'Super') {
                                                               <td align='center'> <input type='radio' name='asfa$i$data[groupId]' value='D'> </td>
                                                               <td align='center'> <input type='radio' name='asfa$i$data[groupId]' value='E'> </td>
                                                               </tr>";
-							$i++;
-						}
-						echo "<br>";
-						$no++;
-					}
-					?>
-				</tbody>
-			</table>
+                                                        $i++;
+                                                    }
+                                                    echo "<br>";
+                                                    $no++;
+                                                }
+                                                ?>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="8">
+                                        <center><button type="submit" class="btn btn-primary btn-lg">Submit</button></center>
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
 			</div>
 
 		<?php
@@ -352,6 +384,7 @@ if ($_SESSION[level] == 'Super') {
 							</i>
 						</blockquote>
 					</form>
+
 				</div>
 			</div>
 	<?php

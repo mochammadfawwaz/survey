@@ -1,4 +1,4 @@
-<?php
+w<?php
 session_start();
 error_reporting(1);
 
@@ -195,29 +195,36 @@ if (empty($_SESSION[username]) and empty($_SESSION[password])) {
                         <li class="<?php if ($_GET['module'] == 'kuisioner') {
                                         echo 'active';
                                     } ?>">
-                            <a href="?module=kuisioner"><i class="glyphicon glyphicon-user"></i>Kuisioner</a>
+                            <a href="?module=kuisioner"><i class="glyphicon glyphicon-user"></i> Kuisioner</a>
                         </li>
+                        <?php if($_SESSION[level] != 'User') { ?>
                         <li class="<?php if ($_GET['module'] == 'user') {
                                         echo 'active';
                                     } ?>">
                             <a href="?module=user"><i class="glyphicon glyphicon-user"></i> Manajemen User</a>
                         </li>
+                        <?php } ?>
+                        <?php if($_SESSION[level] != 'User') { ?>
                         <li class="<?php if ($_GET['module'] == 'group') {
                                         echo 'active';
                                     } ?>">
                             <a href="?module=group"><i class="glyphicon glyphicon-list"></i> Manajemen Group</a>
                         </li>
+                        <?php } ?>
+                        <?php if($_SESSION[level] != 'User') { ?>
                         <li class="<?php if ($_GET['module'] == 'description') {
                                         echo 'active';
                                     } ?>">
                             <a href="?module=description"><i class="glyphicon glyphicon-book"></i> Manajemen Deskripsi </a>
                         </li>
+                        <?php } ?>
+                        <?php if($_SESSION[level] != 'User') { ?>
                         <li class="<?php if ($_GET['module'] == 'hasil') {
                                         echo 'active';
                                     } ?>">
                             <a href="?module=hasil&sub=all"><i class="glyphicon glyphicon-new-window"></i> Hasil Kuesioner</a>
                         </li>
-
+                        <?php } ?>
                     </ul>
                 </div>
             </nav>
