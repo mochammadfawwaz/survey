@@ -371,7 +371,7 @@
                             <div class="form-group">
                                 <label for="" class=" control-label col-sm-3"></label>
                                 <div class="col-sm-2">
-                                    <button class="btn btn-success" type="submit" ><span class="glyphicon glyphicon-user"></span> Daftar</a>
+                                    <button class="btn btn-success" type="submit"><span class="glyphicon glyphicon-user"></span> Daftar</a>
                                 </div>
                             </div>
                         </div>

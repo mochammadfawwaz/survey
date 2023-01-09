@@ -1,56 +1,60 @@
 <style>
 	.btn {
-  display: inline-block;
-  padding: 6px 12px;
-  font-size: 14px;
-  font-weight: normal;
-  line-height: 1.42857143;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  -ms-touch-action: manipulation;
-      touch-action: manipulation;
-  cursor: pointer;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  background-image: none;
-  border: 1px solid transparent;
-  border-radius: 4px;
-  background-color: #5cb85c; 
-  padding: 5px 10px;
-  font-size: 12px;
-  line-height: 1.5;
-  border-radius: 3px;
-  margin-top:10px;
-  margin-bottom: 10px;
-  color: white;
-}
-@font-face {
-  font-family: 'Glyphicons Halflings';
+		display: inline-block;
+		padding: 6px 12px;
+		font-size: 14px;
+		font-weight: normal;
+		line-height: 1.42857143;
+		text-align: center;
+		white-space: nowrap;
+		vertical-align: middle;
+		-ms-touch-action: manipulation;
+		touch-action: manipulation;
+		cursor: pointer;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+		background-image: none;
+		border: 1px solid transparent;
+		border-radius: 4px;
+		background-color: #5cb85c;
+		padding: 5px 10px;
+		font-size: 12px;
+		line-height: 1.5;
+		border-radius: 3px;
+		margin-top: 10px;
+		margin-bottom: 10px;
+		color: white;
+	}
 
-  src: url('../../../fonts/glyphicons-halflings-regular.eot');
-  src: url('../../../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../../../fonts/glyphicons-halflings-regular.woff2') format('woff2'), url('../../../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../../../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../../../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
-}
-.glyphicon {
-  position: relative;
-  top: 1px;
-  display: inline-block;
-  font-family: 'Glyphicons Halflings';
-  font-style: normal;
-  font-weight: normal;
-  line-height: 1;
+	@font-face {
+		font-family: 'Glyphicons Halflings';
 
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-.glyphicon-print:before {
-  content: "\e045";
-}
-.glyphicon-arrow-left:before {
-  content: "\e091";
-}
+		src: url('../../../fonts/glyphicons-halflings-regular.eot');
+		src: url('../../../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../../../fonts/glyphicons-halflings-regular.woff2') format('woff2'), url('../../../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../../../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../../../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+	}
+
+	.glyphicon {
+		position: relative;
+		top: 1px;
+		display: inline-block;
+		font-family: 'Glyphicons Halflings';
+		font-style: normal;
+		font-weight: normal;
+		line-height: 1;
+
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+
+	.glyphicon-print:before {
+		content: "\e045";
+	}
+
+	.glyphicon-arrow-left:before {
+		content: "\e091";
+	}
 </style>
 <?php
 error_reporting(0);
@@ -86,15 +90,15 @@ echo "<center><table border=0 cellpadding=10 cellspacing=5 bgcolor= #e6e6e6>
 					<td bgcolor=#c6e1f2 align=center><b>NO</b></td>
 					<td bgcolor=#c6e1f2 align=center><b>GROUP ID</b></td>
 					<td bgcolor=#c6e1f2 align=center><b>DESCRIPTION</b></td>
-					<td bgcolor=#c6e1f2 align=center><b>JAWABAN A</b></td>
-					<td bgcolor=#c6e1f2 align=center><b>JAWABAN B</b></td>
-					<td bgcolor=#c6e1f2 align=center><b>JAWABAN C</b></td>
-					<td bgcolor=#c6e1f2 align=center><b>JAWABAN D</b></td>
-					<td bgcolor=#c6e1f2 align=center><b>JAWABAN E</b></td>
+					<td bgcolor=#c6e1f2 align=center><b>JAWABAN 1 - SANGAT BURUK</b></td>
+					<td bgcolor=#c6e1f2 align=center><b>JAWABAN 2 - BURUK</b></td>
+					<td bgcolor=#c6e1f2 align=center><b>JAWABAN 3 - BAIK</b></td>
+					<td bgcolor=#c6e1f2 align=center><b>JAWABAN 4 - CUKUP</b></td>
+					<td bgcolor=#c6e1f2 align=center><b>JAWABAN 5 - SANGAT BAIK</b></td>
 					<tr>
 		";
 $no = 1;
-while ($data = mysql_fetch_array($hasil)){
+while ($data = mysql_fetch_array($hasil)) {
 	$descriptionId = $data[descriptionId];
 	$sql = mysql_query("SELECT SUM(jawabanA) As TotalA,
 						SUM(jawabanB) As TotalB,
@@ -102,8 +106,8 @@ while ($data = mysql_fetch_array($hasil)){
 						SUM(jawabanD) As TotalD,
 						SUM(jawabanE) As TotalE
 						FROM tanswer WHERE descriptionId = '$descriptionId'");
-	
-	while($oke = mysql_fetch_array($sql)){
+
+	while ($oke = mysql_fetch_array($sql)) {
 		echo "<tr valign=top>
 			<td align='center'>$no</td>
 			<td align='center'>$data[groupId]</td>
@@ -113,7 +117,7 @@ while ($data = mysql_fetch_array($hasil)){
 			<td align='center'>$oke[TotalC]</td>
 			<td align='center'>$oke[TotalD]</td>
 			<td align='center'>$oke[TotalE]</td>
-		  </tr>";	 
+		  </tr>";
 		$no++;
 	}
 }

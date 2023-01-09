@@ -62,7 +62,7 @@ if ($_SESSION[level] == 'Super' || $_SESSION[level] == 'User') {
 							<div class="col-sm-5">
 								<div class="input-group">
 									<div class="input-group-addon">
-										<span class="glyphicon glyphicon-tags"></span>
+										<span class="glyphicon glyphicon-user"></span>
 									</div>
 									<select name="gender" id="" class="form-control">
 										<option value="Laki-laki">Laki-laki</option>
