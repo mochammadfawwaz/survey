@@ -3,14 +3,11 @@
 error_reporting(0);
 include "koneksi.php";
 include "fungsi/fungsi_indotgl.php";
-$companyName	= $_POST[companyName];
-$companyProduct = $_POST[companyProduct];
-$companyAddress	= $_POST[companyAddress1];
-$companyPhone	= $_POST[companyPhone];
-$companyFax		= $_POST[companyHp];
-$companyPF		= $companyPhone." / ".$companyFax;
-$suggestion		= $_POST[suggestion];
-$agreeCity		= $_POST[agreeCity];
+$nama	= $_POST['nama'];
+$gender = $_POST['gender'];
+$company	= $_POST['company'];
+$position	= $_POST['position'];
+$no_telephone	= $_POST['no_telephone'];
 $date			= date('Y-m-d');
 $companyId = date('Ymd his');
 
@@ -35,30 +32,6 @@ while($data_hitung = mysql_fetch_array($sql_hitung)){
 	}
 	echo "<br>";
 	$no_hitung++;
-}
-
-if (empty($companyName)){
-	echo "<script lang=javascript>
-		 		window.alert('Isi Nama Anda');
-		 		history.back();
-		 		</script>";
-  			exit;
-}
-
-elseif (empty($companyAddress)){
-	echo "<script lang=javascript>
-		 		window.alert('Isi Alamat Anda');
-		 		history.back();
-		 		</script>";
-  			exit;
-}
-
-elseif (empty($companyFax)){
-	echo "<script lang=javascript>
-		 		window.alert('Isi No HP Anda');
-		 		history.back();
-		 		</script>";
-  			exit;
 }
 
 
