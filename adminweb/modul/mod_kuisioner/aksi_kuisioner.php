@@ -80,12 +80,7 @@ if (empty($companyName)) {
 	}
 
 	echo "<center><font face='Tahoma' size='2'>
-			Pelanggan yang terhormat,<br><br>
-			Terima kasih atas waktu yang telah diluangkan untuk melengkapi survey yang kami sediakan. <br>
-			Pendapat Anda sangat berarti bagi kami untuk meningkatkan pelayanan. <br><br>
-			Hormat kami, <br><br>
-			Management<br>
-			Grapari Telkomsel </font><br>
+			Terima kasih atas waktu yang telah diluangkan untuk melengkapi kuisioner yang kami sediakan. <br>
 			<a href='../../master.php?module=kuisioner'>
 			<button  class='btn btn-lg btn-info'><span class='glyphicon glyphicon-arrow-left'></span> Kembali</button>
 			</a>

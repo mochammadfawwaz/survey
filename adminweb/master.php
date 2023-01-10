@@ -1,4 +1,4 @@
-w<?php
+<?php
 session_start();
 error_reporting(1);
 
@@ -19,7 +19,7 @@ if (empty($_SESSION[username]) and empty($_SESSION[password])) {
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Admin Telkomsel</title>
+        <title>E-Procurement</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/sb-admin.css" rel="stylesheet">
         <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">

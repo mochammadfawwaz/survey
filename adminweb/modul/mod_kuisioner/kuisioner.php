@@ -121,8 +121,7 @@ if ($_SESSION[level] == 'Super' || $_SESSION[level] == 'User') {
 							<tr>
 								<td width="97%" valign="top" align="center" colspan="5" style="border-style: none; border-width: medium">
 									<font face="Arial" size="1"><b>Mohon kesediaan Anda untuk memberikan
-											penilaian dan masukan kepada GraPari Telkomsel, dimana hal ini sangat bermanfaat
-											untuk meningkatkan kualitas layanan kami.<br>
+											penilaian.<br>
 										</b><i>Silahkan diisi dengan mengklik option radio
 											serta keterangan sesuai dengan penilaian Anda
 											pada kolom yang telah disediakan</i></font>
@@ -197,7 +196,6 @@ if ($_SESSION[level] == 'Super' || $_SESSION[level] == 'User') {
 								<td width="97%" valign="top" align="center" colspan="5" style="border-style: none; border-width: medium">
 									<center class="well">
 										<font face="Arial" size="1"><b>Terima Kasih Atas Waktu dan Masukan yang anda berikan,Semua masukan yang anda berikan </b> </i></font>
-										<font face="Arial" size="1"><b>akan kami terima sebagai sarana bagi kami untuk meningkatkan kulaitas pelanan kami</b> </i></font>
 									</center>
 								</td>
 							</tr>
