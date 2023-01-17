@@ -19,7 +19,7 @@
 	<div class="panel panel-primary">
 		<div class="panel-heading">
 			<div class="panel-title">
-				<b>Daftar Responden</b><button style="margin-left:710px;" class='btn btn-sm btn-success' value='Print All to Excel' onclick=location.href='modul/mod_report/all_responden.php'><span class="glyphicon glyphicon-zoom-in"></span> Rekap Semua Kuisioner</button>
+				<b>Daftar Responden</b><button style="margin-left:710px;" class='btn btn-sm btn-success' value='Print All to Excel' onclick=location.href='modul/mod_report/all_responden2.php'><span class="glyphicon glyphicon-zoom-in"></span> Rekap Semua Kuisioner</button>
 			</div>
 		</div>
 

@@ -56,22 +56,22 @@ if (empty($companyName)) {
 			// echo "$i $asfa<br>";
 			if ($asfa == 'A') {
 				mysql_query("INSERT INTO tanswer (descriptionId,groupId,companyId,jawaban,jawabanA,jawabanB,jawabanC,jawabanD,jawabanE) 
-				VALUES('$r[descriptionId]','$r[groupId]','$companyId','$asfa','1','0','0','0','0')");
+				VALUES('$r[descriptionId]','$r[groupId]','$companyId','1','1','0','0','0','0')");
 			} elseif ($asfa == 'B') {
 				mysql_query("INSERT INTO tanswer (descriptionId,groupId,companyId,jawaban,jawabanA,jawabanB,jawabanC,jawabanD,jawabanE) 
-				VALUES('$r[descriptionId]','$r[groupId]','$companyId','$asfa','0','1','0','0','0')");
+				VALUES('$r[descriptionId]','$r[groupId]','$companyId','2','0','1','0','0','0')");
 			} elseif ($asfa == 'C') {
 				mysql_query("INSERT INTO tanswer (descriptionId,groupId,companyId,jawaban,jawabanA,jawabanB,jawabanC,jawabanD,jawabanE) 
-				VALUES('$r[descriptionId]','$r[groupId]','$companyId','$asfa','0','0','1','0','0')");
+				VALUES('$r[descriptionId]','$r[groupId]','$companyId','3','0','0','1','0','0')");
 			} elseif ($asfa == 'D') {
 				mysql_query("INSERT INTO tanswer (descriptionId,groupId,companyId,jawaban,jawabanA,jawabanB,jawabanC,jawabanD,jawabanE) 
-				VALUES('$r[descriptionId]','$r[groupId]','$companyId','$asfa','0','0','0','1','0')");
+				VALUES('$r[descriptionId]','$r[groupId]','$companyId','4','0','0','0','1','0')");
 			} elseif ($asfa == 'E') {
 				mysql_query("INSERT INTO tanswer (descriptionId,groupId,companyId,jawaban,jawabanA,jawabanB,jawabanC,jawabanD,jawabanE) 
-				VALUES('$r[descriptionId]','$r[groupId]','$companyId','$asfa','0','0','0','0','1')");
+				VALUES('$r[descriptionId]','$r[groupId]','$companyId','5','0','0','0','0','1')");
 			} else {
 				mysql_query("INSERT INTO tanswer (descriptionId,groupId,companyId,jawaban,jawabanA,jawabanB,jawabanC,jawabanD,jawabanE) 
-				VALUES('$r[descriptionId]','$r[groupId]','$companyId','$asfa','0','0','0','0','0')");
+				VALUES('$r[descriptionId]','$r[groupId]','$companyId','0','0','0','0','0','0')");
 			}
 			$i++;
 		}

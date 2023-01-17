@@ -74,12 +74,13 @@
 			<button style='margin-right:230px;' class='btn'><span class='glyphicon glyphicon-arrow-left'></span> Kembali</button>
 			</a>
 			<b><font size=5>REKAP KUISIONER RESPONDEN</font></b>
-			<a href='exportExcel.php'>
-			<button style='margin-left:230px;' class='btn'><span class='glyphicon glyphicon-print'></span> Cetak</button></a>
+			<!-- <a href='exportExcel.php'>
+			<button style='margin-left:230px;' class='btn'><span class='glyphicon glyphicon-print'></span> Cetak</button></a> -->
+                        <button onclick="window.print()" style='margin-left:230px;' class='btn'><span class='glyphicon glyphicon-print'></span> Cetak</button>
 			</td>
 		</tr>
 		<tr>
-			<td colspan=2>Dicetak : <b>$dateIndo $time</b></td>
+			<td colspan=2>Dicetak : <b><?= $dateIndo; $time; ?></b></td>
 		</tr>
 		
 		<tr>
@@ -91,149 +92,57 @@
 					<td bgcolor=#c6e1f2 align=center><b>Nama Perusahaan</b></td>
 					<td bgcolor=#c6e1f2 align=center><b>Jabatan</b></td>
 					<td bgcolor=#c6e1f2 align=center><b>Jenis Kelamin</b></td>
-					<td bgcolor=#c6e1f2 align=center><b>1</b></td>
-					<td bgcolor=#c6e1f2 align=center><b>2</b></td>
-					<td bgcolor=#c6e1f2 align=center><b>3</b></td>
-					<td bgcolor=#c6e1f2 align=center><b>4</b></td>
-					<td bgcolor=#c6e1f2 align=center><b>5</b></td>
-					<td bgcolor=#c6e1f2 align=center><b>6</b></td>
-					<td bgcolor=#c6e1f2 align=center><b>7</b></td>
-					<td bgcolor=#c6e1f2 align=center><b>8</b></td>
-					<td bgcolor=#c6e1f2 align=center><b>9</b></td>
-					<td bgcolor=#c6e1f2 align=center><b>10</b></td>
-					<td bgcolor=#c6e1f2 align=center><b>11</b></td>
-					<td bgcolor=#c6e1f2 align=center><b>12</b></td>
-					<td bgcolor=#c6e1f2 align=center><b>13</b></td>
-					<td bgcolor=#c6e1f2 align=center><b>14</b></td>
-					<td bgcolor=#c6e1f2 align=center><b>15</b></td>
-					<td bgcolor=#c6e1f2 align=center><b>16</b></td>
-					<td bgcolor=#c6e1f2 align=center><b>17</b></td>
-					<td bgcolor=#c6e1f2 align=center><b>18</b></td>
-					<td bgcolor=#c6e1f2 align=center><b>19</b></td>
-					<td bgcolor=#c6e1f2 align=center><b>20</b></td>
-                    <td bgcolor=#c6e1f2 align=center><b>21</b></td>
-					<td bgcolor=#c6e1f2 align=center><b>22</b></td>
-					<td bgcolor=#c6e1f2 align=center><b>23</b></td>
-					<td bgcolor=#c6e1f2 align=center><b>24</b></td>
-					<td bgcolor=#c6e1f2 align=center><b>25</b></td>
-					<td bgcolor=#c6e1f2 align=center><b>26</b></td>
-					<td bgcolor=#c6e1f2 align=center><b>27</b></td>
-					<td bgcolor=#c6e1f2 align=center><b>28</b></td>
-					<td bgcolor=#c6e1f2 align=center><b>29</b></td>
+                                        <?php 
+                                        $tampil = mysql_query("SELECT descriptionId FROM tdescription");
+                                        $no = 1;
+                                        while ($r = mysql_fetch_array($tampil)) {
+                                        ?>
+					<td bgcolor=#c6e1f2 align='center'><?= $r['descriptionId']; ?></td>
+					<?php $no++; } ?>
 					<tr>
     <?php 
-    $tampil = mysql_query("SELECT * FROM tdata");
-    $no = 1;
+    $tampil = mysql_query("SELECT * FROM tcompany");
+    $ni = 1;
     while ($r = mysql_fetch_array($tampil)) {
+        $companyId = $r[companyId];
     ?>
     <tr valign=top>
-			<td align='center'><?= $no ?></td>
-			<td align='center'><?= $r['fullname']; ?></td>
-			<td align='center'><?= $r['company']; ?></td>
-			<td align='center'><?= $r['position']; ?></td>
-			<td align='center'><?= $r['gender']; ?></td>
-			<td align='center'><?= $r['soal1']; ?></td>
-			<td align='center'><?= $r['soal2']; ?></td>
-			<td align='center'><?= $r['soal3']; ?></td>
-			<td align='center'><?= $r['soal4']; ?></td>
-			<td align='center'><?= $r['soal5']; ?></td>
-			<td align='center'><?= $r['soal6']; ?></td>
-			<td align='center'><?= $r['soal7']; ?></td>
-			<td align='center'><?= $r['soal8']; ?></td>
-			<td align='center'><?= $r['soal9']; ?></td>
-			<td align='center'><?= $r['soal10']; ?></td>
-			<td align='center'><?= $r['soal11']; ?></td>
-			<td align='center'><?= $r['soal12']; ?></td>
-			<td align='center'><?= $r['soal13']; ?></td>
-			<td align='center'><?= $r['soal14']; ?></td>
-			<td align='center'><?= $r['soal15']; ?></td>
-			<td align='center'><?= $r['soal16']; ?></td>
-			<td align='center'><?= $r['soal17']; ?></td>
-			<td align='center'><?= $r['soal18']; ?></td>
-			<td align='center'><?= $r['soal19']; ?></td>
-			<td align='center'><?= $r['soal20']; ?></td>
-			<td align='center'><?= $r['soal21']; ?></td>
-			<td align='center'><?= $r['soal22']; ?></td>
-			<td align='center'><?= $r['soal23']; ?></td>
-			<td align='center'><?= $r['soal24']; ?></td>
-			<td align='center'><?= $r['soal25']; ?></td>
-			<td align='center'><?= $r['soal26']; ?></td>
-			<td align='center'><?= $r['soal27']; ?></td>
-			<td align='center'><?= $r['soal28']; ?></td>
-			<td align='center'><?= $r['soal29']; ?></td>
+			<td align='center'><?= $ni++; ?></td>
+			<td align='center'><?= $r['companyAddress']; ?></td>
+			<td align='center'><?= $r['companyName']; ?></td>
+			<td align='center'><?= $r['companyPhoneHp']; ?></td>
+			<td align='center'><?= $r['product']; ?></td>
+                        <?php 
+                        $sql = mysql_query("SELECT jawaban
+                        FROM tanswer WHERE companyId = '$companyId'");
+                        while ($oke = mysql_fetch_array($sql)) {
+                        ?>
+                        <td align='center'><?= $oke['jawaban']; ?></td>
+                        <?php $no++; } ?>
 	</tr>
-    <?php  $no++; }
-        ?>
+    <?php  } ?>
     <?php 
-    $data_user = mysql_fetch_array(mysql_query("SELECT COUNT(fullname) from tdata"));
-    $data_count = mysql_fetch_array(mysql_query
-    ("SELECT SUM(soal1/20) As TotalA,
-     SUM(soal2/20) As  TotalB,
-     SUM(soal3/20) As  TotalC,
-     SUM(soal4/20) As  TotalD,
-     SUM(soal5/20) As  TotalE,
-     SUM(soal6/20) As  TotalF,
-     SUM(soal7/20) As  TotalG,
-     SUM(soal8/20) As  TotalH,
-     SUM(soal9/20) As  TotalI,
-     SUM(soal10/20) As TotalJ,
-     SUM(soal11/20) As TotalK,
-     SUM(soal12/20) As TotalL,
-     SUM(soal13/20) As TotalM,
-     SUM(soal14/20) As TotalN,
-     SUM(soal15/20) As TotalO,
-     SUM(soal16/20) As TotalP,
-     SUM(soal17/20) As TotalQ,
-     SUM(soal18/20) As TotalR,
-     SUM(soal18/20) As TotalS,
-     SUM(soal19/20) As TotalT,
-     SUM(soal20/20) As TotalU,
-     SUM(soal21/20) As TotalV,
-     SUM(soal22/20) As TotalW,
-     SUM(soal23/20) As TotalX,
-     SUM(soal24/20) As TotalY,
-     SUM(soal25/20) As TotalZ,
-     SUM(soal26/20) As TotalA1,
-     SUM(soal27/20) As TotalA2,
-     SUM(soal28/20) As TotalA3,
-     SUM(soal29/20) As TotalA4
-						FROM tdata"));
+    
     ?>
     <tr align='center'>
 		<td bgcolor=#c6e1f2 colspan='5'><b>Total</b></td>
-		<td bgcolor=#c6e1f2><b><?php $nama = round($data_count[TotalA], 2); echo $nama; ?></b></td>
-		<td bgcolor=#c6e1f2><b><?php $nama = round($data_count[TotalB], 2); echo $nama; ?></b></td>
-		<td bgcolor=#c6e1f2><b><?php $nama = round($data_count[TotalC], 2); echo $nama; ?></b></td>
-		<td bgcolor=#c6e1f2><b><?php $nama = round($data_count[TotalD], 2); echo $nama; ?></b></td>
-		<td bgcolor=#c6e1f2><b><?php $nama = round($data_count[TotalE], 2); echo $nama; ?></b></td>
-		<td bgcolor=#c6e1f2><b><?php $nama = round($data_count[TotalF], 2); echo $nama; ?></b></td>
-		<td bgcolor=#c6e1f2><b><?php $nama = round($data_count[TotalG], 2); echo $nama; ?></b></td>
-		<td bgcolor=#c6e1f2><b><?php $nama = round($data_count[TotalH], 2); echo $nama; ?></b></td>
-		<td bgcolor=#c6e1f2><b><?php $nama = round($data_count[TotalI], 2); echo $nama; ?></b></td>
-		<td bgcolor=#c6e1f2><b><?php $nama = round($data_count[TotalJ], 2); echo $nama; ?></b></td>
-		<td bgcolor=#c6e1f2><b><?php $nama = round($data_count[TotalK], 2); echo $nama; ?></b></td>
-		<td bgcolor=#c6e1f2><b><?php $nama = round($data_count[TotalL], 2); echo $nama; ?></b></td>
-		<td bgcolor=#c6e1f2><b><?php $nama = round($data_count[TotalM], 2); echo $nama; ?></b></td>
-		<td bgcolor=#c6e1f2><b><?php $nama = round($data_count[TotalN], 2); echo $nama; ?></b></td>
-		<td bgcolor=#c6e1f2><b><?php $nama = round($data_count[TotalO], 2); echo $nama; ?></b></td>
-		<td bgcolor=#c6e1f2><b><?php $nama = round($data_count[TotalP], 2); echo $nama; ?></b></td>
-		<td bgcolor=#c6e1f2><b><?php $nama = round($data_count[TotalQ], 2); echo $nama; ?></b></td>
-		<td bgcolor=#c6e1f2><b><?php $nama = round($data_count[TotalR], 2); echo $nama; ?></b></td>
-		<td bgcolor=#c6e1f2><b><?php $nama = round($data_count[TotalS], 2); echo $nama; ?></b></td>
-		<td bgcolor=#c6e1f2><b><?php $nama = round($data_count[TotalT], 2); echo $nama; ?></b></td>
-		<td bgcolor=#c6e1f2><b><?php $nama = round($data_count[TotalU], 2); echo $nama; ?></b></td>
-		<td bgcolor=#c6e1f2><b><?php $nama = round($data_count[TotalV], 2); echo $nama; ?></b></td>
-		<td bgcolor=#c6e1f2><b><?php $nama = round($data_count[TotalW], 2); echo $nama; ?></b></td>
-		<td bgcolor=#c6e1f2><b><?php $nama = round($data_count[TotalX], 2); echo $nama; ?></b></td>
-		<td bgcolor=#c6e1f2><b><?php $nama = round($data_count[TotalY], 2); echo $nama; ?></b></td>
-		<td bgcolor=#c6e1f2><b><?php $nama = round($data_count[TotalZ], 2); echo $nama; ?></b></td>
-		<td bgcolor=#c6e1f2><b><?php $nama = round($data_count[TotalA1], 2); echo $nama; ?></b></td>
-		<td bgcolor=#c6e1f2><b><?php $nama = round($data_count[TotalA2], 2); echo $nama; ?></b></td>
-		<td bgcolor=#c6e1f2><b><?php $nama = round($data_count[TotalA3], 2); echo $nama; ?></b></td>
+                <?php 
+                $tampil1 = mysql_query("SELECT descriptionId FROM tdescription");
+                $no = 1;
+                while ($r = mysql_fetch_array($tampil1)) {
+                        $companyId = $r[descriptionId];
+                $sql1 = mysql_query("SELECT SUM(jawaban) as jawabanA
+                FROM tanswer WHERE descriptionId = '$companyId'");
+                while ($oke1 = mysql_fetch_array($sql1)) {
+                ?>
+		<td><b><?= $oke1['jawabanA'] ?></b></td>
+		<?php  $no++; } ?>
+                <?php  } ?>
 		</tr>
+                    
 	</table>
 	</td>
-	</tr>
+	</tr> 
 	</table>
 	</center>
     <table border=0 cellpadding=10 cellspacing=5 bgcolor= #e6e6e6>

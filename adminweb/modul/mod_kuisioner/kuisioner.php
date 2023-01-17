@@ -69,7 +69,8 @@ if ($_SESSION[level] == 'Super' || $_SESSION[level] == 'User') {
 											<div class="col-sm-4">
 												<div class="input-group">
 													<select name="gender" id="" class="form-control">
-														<option value="<?= $r[gender]; ?>"><?= $r[gender]; ?></option>
+														<option value="Laki-laki">Laki-laki</option>
+														<option value="Perempuan">Perempuan</option>
 													</select>
 												</div>
 											</div>
@@ -151,8 +152,9 @@ if ($_SESSION[level] == 'Super' || $_SESSION[level] == 'User') {
 											$no = 1;
 											$sql = mysql_query("SELECT * FROM tgroup");
 											while ($data = mysql_fetch_array($sql)) {
+											
 												$id = $data[groupId];
-												echo "<tr valign='top'>
+												<tr valign='top'>
                                                           <td><font face='Tahoma' size='2' colspan='1'><b> $no</b></font></td>
                                                           <td colspan='2'><font face='Tahoma' size='2'><b>$data[groupName]</b></font></td>
                                                           
